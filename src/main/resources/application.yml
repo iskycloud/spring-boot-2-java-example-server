@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/DATABASE_NAME?serverTimezone=Asia/Seoul&zeroDateTimeBehavior=CONVERT_TO_NULL&useFractionalSeconds=true&useUnicode=yes&characterEncoding=UTF-8&tinyInt1isBit=false
+    username: DATABASE_USERNAME
+    password: DATABASE_PASSWORD
+  jpa:
+    hibernate:
+      ddl-auto: validate
+#      naming:
+#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: true
+        format_sql: true
