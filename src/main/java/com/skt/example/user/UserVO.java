@@ -1,9 +1,14 @@
 package com.skt.example.user;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -16,11 +21,15 @@ import lombok.experimental.Accessors;
 public class UserVO {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    Long sid;
-    String id;
+    Long id;
+    String loginId;
     String name;
     String mobile;
     String address;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    Set<UserServiceVO> services;
 }
 
 /*

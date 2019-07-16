@@ -1,7 +1,10 @@
 package com.skt.example.user;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<UserVO, Long> {
-    UserVO findById(String id);
+    @Override
+    List<UserVO> findAll();
 }

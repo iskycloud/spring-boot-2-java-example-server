@@ -1,5 +1,7 @@
 package com.skt.example.user;
 
+import java.util.List;
+
 public interface UserService {
-    UserVO getUserById(String id);
+    List<UserVO> getUsers();
 }
