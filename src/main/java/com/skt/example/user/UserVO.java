@@ -1,26 +1,46 @@
 package com.skt.example.user;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 @Entity
 @Table(name = "user")
 @Data
 @Accessors(chain = true)
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class, 
+        property = "id")
 public class UserVO {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    Long sid;
-    String id;
+    Long id;
+    String loginId;
     String name;
     String mobile;
     String address;
+    
+    @EqualsAndHashCode.Exclude
+    @ManyToMany
+    @JoinTable(
+      name = "user_service", 
+      joinColumns = @JoinColumn(name = "user_id"), 
+      inverseJoinColumns = @JoinColumn(name = "service_id"))
+    Set<ServiceVO> services;
 }
 
 /*
