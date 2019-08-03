@@ -1,14 +1,30 @@
 # 초기 설정
 ## 1. MySQL Query
 <pre>
+CREATE DATABASE IF NOT EXISTS `example` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `example`;
+
+CREATE TABLE IF NOT EXISTS `service` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
 CREATE TABLE IF NOT EXISTS `user` (
-`sid` bigint(20) NOT NULL AUTO_INCREMENT,
-`id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-`name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-`mobile` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-`address` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-PRIMARY KEY (`sid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `login_id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `user_service` (
+  `user_id` bigint(20) NOT NULL,
+  `service_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`user_id`,`service_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DELETE FROM `user`;
 
