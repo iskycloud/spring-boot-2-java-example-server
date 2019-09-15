@@ -3,4 +3,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'spring_boot_2_example_server'
+rootProject.name = 'spring-boot-2-java-example-server'
